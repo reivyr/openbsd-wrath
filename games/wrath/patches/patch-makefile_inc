@@ -21,6 +21,17 @@ Index: makefile.inc
  # NOTE: *never* *ever* use the -ffast-math or -funsafe-math-optimizations flag
  
  SDL_CONFIG?=sdl-config
+@@ -189,8 +189,8 @@ OPTIM_DEBUG=$(CPUOPTIMIZATIONS)
+ #OPTIM_RELEASE=-O2 -fno-strict-aliasing -ffast-math -funroll-loops $(CPUOPTIMIZATIONS)
+ #OPTIM_RELEASE=-O2 -fno-strict-aliasing -fno-math-errno -fno-trapping-math -ffinite-math-only -fno-signaling-nans -fcx-limited-range -funroll-loops $(CPUOPTIMIZATIONS)
+ #OPTIM_RELEASE=-O2 -fno-strict-aliasing -funroll-loops $(CPUOPTIMIZATIONS)
+-#OPTIM_RELEASE=-O2 -fno-strict-aliasing $(CPUOPTIMIZATIONS)
+-OPTIM_RELEASE=-O3 -fno-strict-aliasing $(CPUOPTIMIZATIONS)
++OPTIM_RELEASE=-O2 -fno-strict-aliasing $(CPUOPTIMIZATIONS)
++#OPTIM_RELEASE=-O3 -fno-strict-aliasing $(CPUOPTIMIZATIONS)
+ # NOTE: *never* *ever* use the -ffast-math or -funsafe-math-optimizations flag
+ 
+ DO_CC=$(CC) $(CFLAGS) -c $< -o $@
 @@ -264,6 +264,8 @@ LDFLAGS_SUNOSSDL=$(LDFLAGS_UNIXCOMMON) -lrt -ldl -lsoc
  
  
