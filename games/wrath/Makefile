@@ -1,29 +1,37 @@
-# $OpenBSD: Makefile.template,v 1.87 2020/03/22 17:18:01 cwen Exp $
+# $OpenBSD: Makefile$
 
-COMMENT =	Fork of LordHavoc's DarkPlaces Quake engine
+COMMENT =		client of wrath-darkplaces engine
 
-V =	1.2.1
+V =			0.0.0.20200228
 
-DISTNAME =	wrath-${V}
+DISTNAME =		wrath-${V}
 
-GH_ACCOUNT =	KillPixelGames
-GH_PROJECT =	wrath-darkplaces
-GH_COMMIT =	ae8a4c06f2b2b088a537bb75c439817f4a009d6a
+GH_ACCOUNT =		KillPixelGames
+GH_PROJECT =		wrath-darkplaces
+GH_COMMIT =		ae8a4c06f2b2b088a537bb75c439817f4a009d6a
 
-CATEGORIES =	games
+CATEGORIES =		games
 
-MAINTAINER =	Paul Valencia <reivyr@tutanota.com>
+MAINTAINER =		Paul Valencia <reivyr@enmadechi.com>
 
 # GPLv2
 PERMIT_PACKAGE =	Yes
 
-WANTLIB += SDL2 X11 c jpeg m z
+WANTLIB =		SDL2 X11 c jpeg m z
 
 LIB_DEPENDS =		devel/sdl2 \
 			graphics/jpeg
 
+MAKE_FLAGS =		CC="${CC}" \
+			CFLAGS_LIBJPEG="-I${LOCALBASE}/include -DLINK_TO_LIBJPEG" \
+			CPUOPTIMIZATIONS="${CFLAGS}"
+
 USE_GMAKE =		Yes
+
+NO_TEST =		Yes
+
 MAKE_FILE =		makefile
+
 ALL_TARGET =		sdl2-release
 
 do-install:
